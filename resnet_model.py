@@ -10,7 +10,7 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 from torchvision.models import ResNet18_Weights
-from FinalProject_1 import load_data, train_network, test_network, plot_loss_curves, save_model, evaluate_per_class
+from utils import load_data, train_network, test_network, plot_loss_curves, save_model, evaluate_per_class
 
 def build_resnet(num_classes):
     """Load a pretrained ResNet18 model, freeze all layers but just replace

@@ -8,8 +8,8 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 import matplotlib.pyplot as plt
-from FinalProject_1 import load_data
-from FinalProject_3 import GroceryViTConfig, NetTransformer
+from utils import load_data
+from vit_model import GroceryViTConfig, NetTransformer
 
 
 def load_resnet(num_classes, path='resnet18_fruits.pth'):

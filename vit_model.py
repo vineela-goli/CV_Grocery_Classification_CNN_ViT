@@ -6,7 +6,7 @@ import sys
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from FinalProject_1 import load_data, train_network, test_network, plot_loss_curves, save_model, evaluate_per_class
+from utils import load_data, train_network, test_network, plot_loss_curves, save_model, evaluate_per_class
 
 
 class GroceryViTConfig:

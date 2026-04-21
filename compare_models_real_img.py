@@ -7,9 +7,9 @@ import os
 import torch
 import matplotlib.pyplot as plt
 from PIL import Image
-from FinalProject_1 import load_data, get_transforms
-from FinalProject_3 import GroceryViTConfig, NetTransformer
-from FinalProject_4 import load_resnet, load_vit
+from utils import load_data, get_transforms
+from vit_model import GroceryViTConfig, NetTransformer
+from compare_models import load_resnet, load_vit
 
 # Directory where real grocery photos are stored
 PHOTO_DIR = './data/real_photos'
