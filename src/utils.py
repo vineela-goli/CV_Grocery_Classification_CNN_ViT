@@ -14,7 +14,7 @@ from torchvision.datasets import ImageFolder
 from torch.utils.data import DataLoader
 
 # Location of our training and test data set
-DATA_DIR = './data/fruits_vegetables'
+DATA_DIR = 'data/fruits_vegetables'
 BATCH_SIZE = 32
 IMAGE_SIZE = 224
 

@@ -8,11 +8,10 @@ import torch
 import matplotlib.pyplot as plt
 from PIL import Image
 from utils import load_data, get_transforms
-from vit_model import GroceryViTConfig, NetTransformer
 from compare_models import load_resnet, load_vit
 
 # Directory where real grocery photos are stored
-PHOTO_DIR = './data/real_photos'
+PHOTO_DIR = 'data/real_photos'
 
 
 def load_real_photos(photo_dir=PHOTO_DIR):
