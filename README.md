@@ -1,9 +1,10 @@
 # Grocery Classification: CNN vs. Vision Transformer
 
-**CS5330 - Computer Vision | Final Project**
-**Author: Vineela Goli**
+**CS5330 - Computer Vision | Final Project**  
+**Author: Vineela Goli**  
+**Video Link:** https://youtu.be/e8kIKvApRvM  
 
-Comparison of transfer-learning with a pretrained ResNet18 (CNN) against a Vision Transformer (ViT) built from scratch on a 36-class fruits and vegetables dataset.
+This project builds and compares two image classification approaches on the Grocery Store Dataset: a pretrained ResNet18 CNN using transfer learning, and a Vision Transformer (ViT) trained from scratch. The goal is to evaluate which architecture performs better on a real-world dataset beyond MNIST, and understand the tradeoffs between the two approaches. Testing will include using a real grocery images taken on my phone to evaluate both models.
 
 ---
 
@@ -41,22 +42,24 @@ The dataset (`data/fruits_vegetables/`) contains **36 grocery classes** split in
 
 ```
 CV_Grocery_Classification_CNN_ViT/
-├── utils.py                    # Shared data loading, training/testing loops, plotting
-├── resnet_model.py             # ResNet18 transfer learning — build, train, save
-├── vit_model.py                # ViT built from scratch — build, train, save
-├── compare_models.py           # Side-by-side prediction comparison on test set
-├── compare_models_real_img.py  # Run both models on real grocery photos
+├── src/
+│   ├── utils.py                    # Shared data loading, training/testing loops, plotting
+│   ├── resnet_model.py             # ResNet18 transfer learning — build, train, save
+│   ├── vit_model.py                # ViT built from scratch — build, train, save
+│   ├── compare_models.py           # Side-by-side prediction comparison on test set
+│   └── compare_models_real_img.py  # Run both models on real grocery photos
 ├── data/
-│   ├── fruits_vegetables/      # Train/test dataset (ImageFolder structure)
-│   └── real_photos/            # Real-world grocery photos for evaluation
-├── results/                    # Training logs, per-class accuracy tables, plots
-├── resnet18_fruits.pth         # Saved ResNet18 model weights
-├── vit_fruits.pth              # Saved ViT model weights
-├── ResNet18_Training.png       # ResNet18 loss curve
-├── ViT_Training.png            # ViT loss curve (20 epochs)
-├── ViT_Training2.png           # ViT loss curve (35 epochs)
-├── comparison.png              # Side-by-side predictions on test batch
-└── real_photo_results.png      # Predictions on real grocery photos
+│   ├── fruits_vegetables/          # Train/test/validation dataset (ImageFolder structure)
+│   └── real_photos/                # Real-world grocery photos for evaluation
+├── docs/                           # Project proposal, report, and presentation
+├── results/                        # Training logs, per-class accuracy tables, plots
+├── resnet18_fruits.pth             # Saved ResNet18 model weights
+├── vit_fruits.pth                  # Saved ViT model weights
+├── ResNet18_Training.png           # ResNet18 loss curve
+├── ViT_Training.png                # ViT loss curve (20 epochs)
+├── ViT_Training2.png               # ViT loss curve (35 epochs)
+├── comparison.png                  # Side-by-side predictions on test batch
+└── real_photo_results.png          # Predictions on real grocery photos
 ```
 
 ---
@@ -111,7 +114,7 @@ The ViT uses mean token pooling (no CLS token) before a two-layer classifier hea
 | 13 (Phase 2, FT3) | 0.1648 | 95.54% |
 | **15 (Phase 2, FT5)** | **0.1028** | **97.49%** |
 
-Notable per-class results: 25 of 36 classes reached 100% accuracy. Weakest classes: banana (77.8%), potato (80.0%).
+Notable per-class results: 29 of 36 classes reached 100% accuracy. Weakest classes: banana (77.8%), potato (80.0%).
 
 ![ResNet18 Training Curves](ResNet18_Training.png)
 
@@ -161,7 +164,7 @@ Both models evaluated on 5 real-world photos from `data/real_photos/`:
 | onion.jpeg | **onion** ✓ | 67.4% | **onion** ✓ | 54.1% |
 | potato.jpeg | **potato** ✓ | 36.6% | beetroot ✗ | 73.9% |
 
-ResNet18: 4/5 correct | ViT: 2/5 correct on real photos.
+ResNet18: 5/5 correct | ViT: 2/5 correct on real photos.
 
 ![Real Photo Results](real_photo_results.png)
 
@@ -173,7 +176,7 @@ ResNet18: 4/5 correct | ViT: 2/5 correct on real photos.
 |--------|----------|---------------|
 | Test accuracy | **97.49%** | 90.81% |
 | Epochs | 15 | 35 |
-| Real-photo accuracy | **4/5** | 2/5 |
+| Real-photo accuracy | **5/5** | 2/5 |
 | Training approach | Transfer learning | From scratch |
 
 ResNet18 outperforms the ViT significantly with fewer epochs due to ImageNet pretraining. The ViT-from-scratch achieves competitive accuracy (90.81%) given the small dataset size, but requires more epochs and is more susceptible to visually similar classes. ViTs typically benefit from large-scale pretraining, making transfer learning the stronger choice for small datasets.
@@ -186,22 +189,22 @@ ResNet18 outperforms the ViT significantly with fewer epochs due to ImageNet pre
 
 **Train ResNet18:**
 ```bash
-python resnet_model.py
+python src/resnet_model.py
 ```
 
 **Train ViT:**
 ```bash
-python vit_model.py
+python src/vit_model.py
 ```
 
 **Compare models on test set:**
 ```bash
-python compare_models.py
+python src/compare_models.py
 ```
 
 **Test on real photos** (place images in `data/real_photos/`):
 ```bash
-python compare_models_real_img.py
+python src/compare_models_real_img.py
 ```
 
 ---
@@ -213,3 +216,10 @@ python compare_models_real_img.py
 - torchvision
 - matplotlib
 - Pillow
+
+## Acknowledgements
+- Used my own project 5 transformers code to adapt to this project
+- Used Claude AI to generate this README that is verified and edited by me afterwards
+- Used Canva for presentation preparation
+- Used Claude AI to find related work papers
+- Used Google Colab to run the transformer using the free GPU

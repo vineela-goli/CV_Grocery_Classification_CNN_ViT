@@ -111,12 +111,10 @@ class PatchEmbedding(nn.Module):
 #
 # Patch embedding layer
 # dropout
-# Transformer layer (with dropout)
-# Transformer layer (with dropout)
-# Transformer layer (with dropout)
+# Transformer layer (with dropout)  x6
 # Token averaging
 # Linear layer w/GELU and dropout
-# Fully connected output layer 10 nodes: softmax output
+# Fully connected output layer (num_classes nodes): log_softmax output
 class NetTransformer(nn.Module):
     # the init method defines the layers of the network
     def __init__(self, config):
@@ -227,7 +225,7 @@ def main(argv):
     # Load data sets and build ViT network
     train_loader, test_loader, class_names = load_data()
 
-    # Create our network and run the network on 35 epoch on the data (initially tried 20 but that wasn't enough), track train/test losses and accuracies and plot them
+    # Create our network and run the network on 35 epochs on the data (initially tried 20 but that wasn't enough), track train/test losses and accuracies and plot them
     config = GroceryViTConfig(num_classes=len(class_names))
     network = NetTransformer(config)
     network = network.to(device)
